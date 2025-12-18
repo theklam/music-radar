@@ -1,0 +1,204 @@
+{
+  "artists": [
+    {
+      "id": "artist_001",
+      "name": "Luna Waves",
+      "genre": "Indie Pop",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 125000,
+          "playlistAdds": 450,
+          "listeners": 42000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 95000,
+          "playlistAdds": 320,
+          "listeners": 35000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 78000,
+          "playlistAdds": 280,
+          "listeners": 30000
+        }
+      ]
+    },
+    {
+      "id": "artist_002",
+      "name": "Echo Chamber",
+      "genre": "Electronic",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 89000,
+          "playlistAdds": 210,
+          "listeners": 28000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 85000,
+          "playlistAdds": 200,
+          "listeners": 27000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 82000,
+          "playlistAdds": 195,
+          "listeners": 26500
+        }
+      ]
+    },
+    {
+      "id": "artist_003",
+      "name": "The Midnight Owls",
+      "genre": "Alternative",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 215000,
+          "playlistAdds": 680,
+          "listeners": 67000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 145000,
+          "playlistAdds": 420,
+          "listeners": 48000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 112000,
+          "playlistAdds": 350,
+          "listeners": 39000
+        }
+      ]
+    },
+    {
+      "id": "artist_004",
+      "name": "Violet Sky",
+      "genre": "Dream Pop",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 52000,
+          "playlistAdds": 145,
+          "listeners": 18000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 48000,
+          "playlistAdds": 130,
+          "listeners": 17000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 45000,
+          "playlistAdds": 125,
+          "listeners": 16500
+        }
+      ]
+    },
+    {
+      "id": "artist_005",
+      "name": "Neon Jungle",
+      "genre": "Synth Wave",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 178000,
+          "playlistAdds": 520,
+          "listeners": 55000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 132000,
+          "playlistAdds": 380,
+          "listeners": 42000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 105000,
+          "playlistAdds": 310,
+          "listeners": 36000
+        }
+      ]
+    },
+    {
+      "id": "artist_006",
+      "name": "Coastal Drift",
+      "genre": "Chill Wave",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 67000,
+          "playlistAdds": 180,
+          "listeners": 22000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 65000,
+          "playlistAdds": 175,
+          "listeners": 21500
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 64000,
+          "playlistAdds": 172,
+          "listeners": 21200
+        }
+      ]
+    },
+    {
+      "id": "artist_007",
+      "name": "Static Dreams",
+      "genre": "Lo-fi Hip Hop",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 142000,
+          "playlistAdds": 390,
+          "listeners": 45000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 108000,
+          "playlistAdds": 285,
+          "listeners": 36000
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 92000,
+          "playlistAdds": 240,
+          "listeners": 31000
+        }
+      ]
+    },
+    {
+      "id": "artist_008",
+      "name": "Silver Lining",
+      "genre": "Indie Folk",
+      "weeklyMetrics": [
+        {
+          "week": "2024-01-22",
+          "streams": 38000,
+          "playlistAdds": 95,
+          "listeners": 14000
+        },
+        {
+          "week": "2024-01-15",
+          "streams": 36000,
+          "playlistAdds": 90,
+          "listeners": 13500
+        },
+        {
+          "week": "2024-01-08",
+          "streams": 35000,
+          "playlistAdds": 88,
+          "listeners": 13200
+        }
+      ]
+    }
+  ]
+}
