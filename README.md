@@ -2,67 +2,120 @@
 
 A simple prototype that discovers new music artists using basic signals.
 
-## Quick Start
+## Quick Start (Mock Data)
 
-No dependencies needed (for now). Just run:
+No dependencies needed. Just run:
 
 ```bash
 python discover.py "Radiohead"
 ```
 
-Or without arguments to be prompted:
+## Using Real Spotify API
+
+### 1. Get Spotify Credentials
+
+1. Go to https://developer.spotify.com/dashboard
+2. Create a new app (name/description don't matter)
+3. Copy your **Client ID** and **Client Secret**
+
+That's it! No redirect URI needed.
+
+### 2. Set Environment Variables
+
+Create a `.env` file:
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your credentials:
+```
+SPOTIFY_CLIENT_ID=your_client_id_here
+SPOTIFY_CLIENT_SECRET=your_client_secret_here
+```
+
+The script automatically loads `.env` - no need to export!
+
+### 3. Install Dependencies
 
 ```bash
-python discover.py
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
 ```
+
+### 4. Run with Real API
+
+The script auto-detects credentials:
+
+```bash
+python discover.py "Radiohead"
+```
+
+Or explicitly use `--real` flag:
+
+```bash
+python discover.py --real "Radiohead"
+```
+
+**No browser authorization needed!** Uses simple app authentication.
+
+**Note:** Spotify apps in Development Mode have limited API access. The related-artists endpoint requires Extended Quota Mode (needs Spotify approval). This app uses genre-based discovery as a workaround.
 
 ## How It Works
 
 1. Searches for your seed artist
-2. Finds related/similar artists
-3. Filters for "undiscovered" artists (< 500k followers)
+2. Finds similar artists by genre matching
+3. Filters for "undiscovered" artists (< 2M followers for real API, < 500k for mock)
 4. Ranks by discovery score (lower followers = higher score)
 5. Returns top 10 results
 
 ## Example Output
 
+**With Real Spotify API:**
 ```
+Mode: Real Spotify API
+
 🔍 Searching for 'Radiohead'...
-✓ Found: Radiohead (6,789,234 followers)
+✓ Found: Radiohead (14,461,057 followers)
 
 🎵 Finding related artists...
-✓ Found 6 related artists
+✓ Found 7 related artists
 
-🔎 Filtering for artists with < 500,000 followers...
+🔎 Filtering for artists with < 2,000,000 followers...
 
-✨ Discovered 3 artists:
+✨ Discovered 2 artists:
 
 --------------------------------------------------------------------------------
-1. Thee Silver Mt. Zion Memorial Orchestra
-   Followers: 45,678
-   Genres: post-rock, experimental, chamber pop
-   Discovery Score: 90.9/100
-   Popularity: 42/100
+1. Swans
+   Followers: 352,127
+   Genres: noise rock, post-rock, neofolk
+   Discovery Score: 82.4/100
+   Popularity: 48/100
 
-2. Bark Psychosis
-   Followers: 34,567
-   Genres: post-rock, experimental
-   Discovery Score: 93.1/100
-   Popularity: 38/100
-...
+2. King Crimson
+   Followers: 1,328,499
+   Genres: progressive rock, art rock, psychedelic rock
+   Discovery Score: 33.6/100
+   Popularity: 58/100
 ```
 
 ## Current Status
 
-**✅ Working with mock data**
-- Mock Spotify-like artist database
-- ~15 artists with realistic metadata
-- Related artist relationships
+**✅ Working with both mock and real Spotify API**
+- Mock data: ~15 artists with realistic metadata
+- Real API: Genre-based discovery (workaround for Development Mode)
+- Auto-detects credentials and switches modes
+- Simple client credentials flow (no browser auth needed)
 
-**🔜 Next steps**
-- Swap mock data for real Spotify Web API
-- Add virtual environment setup
-- Add more discovery signals (genre matching, release recency, etc.)
+**⚠️ Limitations**
+- Development Mode apps can't access related-artists endpoint
+- Using genre-based search as workaround (less accurate but works)
+- To get better results, request Extended Quota Mode from Spotify
+
+**🔜 Potential improvements**
+- Add more discovery signals (release recency, artist collaborations)
+- Implement caching for faster repeated searches
+- Add filtering by genre preferences
 
 ## Architecture
 
@@ -72,17 +125,17 @@ spotify_client.py    # Data layer (easy to swap mock → real API)
 mock_data.py         # Mock artist database
 ```
 
-## When Ready for Real Spotify API
+## Testing Authentication
 
-1. Create Spotify Developer account
-2. Get Client ID + Secret
-3. Install dependencies:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # or `venv\Scripts\activate` on Windows
-   pip install spotipy
-   ```
-4. Update `spotify_client.py` - replace mock functions with real API calls (TODOs are marked)
-5. Add config file for credentials
+Test your Spotify credentials:
 
-All the hard-coded mock lookups will be replaced with simple spotipy calls.
+```bash
+python auth.py
+```
+
+Should output:
+```
+Testing Spotify authentication...
+✓ Successfully authenticated!
+✓ Test search: Found 'Radiohead' with 14,461,057 followers
+```

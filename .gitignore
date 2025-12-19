@@ -1,0 +1,15 @@
+# Environment variables (contains secrets)
+.env
+
+# Python virtual environment
+venv/
+env/
+
+# Spotify OAuth cache
+.spotify_cache
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.cache

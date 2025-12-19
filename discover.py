@@ -4,11 +4,16 @@ Music Artist Discovery Tool
 Discovers new artists based on similarity to a seed artist
 """
 
+import os
 import sys
+from dotenv import load_dotenv
 from spotify_client import SpotifyClient
 
+# Load environment variables from .env file
+load_dotenv()
 
-def discover_artists(seed_artist_name, max_followers=500000, limit=10):
+
+def discover_artists(seed_artist_name, max_followers=500000, limit=10, use_real_api=False):
     """
     Discover new artists similar to the seed artist.
 
@@ -16,11 +21,12 @@ def discover_artists(seed_artist_name, max_followers=500000, limit=10):
         seed_artist_name: Name of the artist to base discovery on
         max_followers: Maximum followers for "undiscovered" artists
         limit: Maximum number of artists to return
+        use_real_api: If True, use real Spotify API
 
     Returns:
         List of discovered artist dicts
     """
-    client = SpotifyClient()
+    client = SpotifyClient(use_real_api=use_real_api)
 
     # Search for the seed artist
     print(f"🔍 Searching for '{seed_artist_name}'...")
@@ -80,9 +86,23 @@ def print_results(artists):
 
 def main():
     """Main entry point."""
+    # Check if using real API (via --real flag or env vars)
+    use_real_api = False
+    args = sys.argv[1:]
+
+    if "--real" in args:
+        use_real_api = True
+        args.remove("--real")
+    elif all([
+        os.getenv("SPOTIFY_CLIENT_ID"),
+        os.getenv("SPOTIFY_CLIENT_SECRET")
+    ]):
+        # Auto-detect if credentials are set
+        use_real_api = True
+
     # Get seed artist from command line or prompt
-    if len(sys.argv) > 1:
-        seed_artist = " ".join(sys.argv[1:])
+    if args:
+        seed_artist = " ".join(args)
     else:
         seed_artist = input("Enter an artist name: ").strip()
 
@@ -90,11 +110,19 @@ def main():
         print("Please provide an artist name")
         sys.exit(1)
 
+    # Show mode
+    mode = "Real Spotify API" if use_real_api else "Mock data"
+    print(f"Mode: {mode}\n")
+
     # Discover artists
+    # Note: Real API uses higher threshold since Spotify has more mainstream data
+    threshold = 2000000 if use_real_api else 500000
+
     discovered = discover_artists(
         seed_artist_name=seed_artist,
-        max_followers=500000,  # Artists with < 500k followers
-        limit=10
+        max_followers=threshold,
+        limit=10,
+        use_real_api=use_real_api
     )
 
     # Print results
