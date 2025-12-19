@@ -71,7 +71,7 @@ python discover.py --real "Radiohead"
 
 ## Example Output
 
-**With Real Spotify API:**
+**Alternative Rock (Radiohead):**
 ```
 Mode: Real Spotify API
 
@@ -85,19 +85,32 @@ Mode: Real Spotify API
 
 ✨ Discovered 2 artists:
 
---------------------------------------------------------------------------------
 1. Swans
    Followers: 352,127
    Genres: noise rock, post-rock, neofolk
    Discovery Score: 82.4/100
-   Popularity: 48/100
 
 2. King Crimson
    Followers: 1,328,499
    Genres: progressive rock, art rock, psychedelic rock
    Discovery Score: 33.6/100
-   Popularity: 58/100
 ```
+
+**Future Bass / Electronic (Manila Killa):**
+```
+🔍 Searching for 'Manila Killa'...
+✓ Found: Manila Killa (70,789 followers)
+
+✨ Discovered 10 artists:
+
+1. Alna - 822 followers (100/100 score!)
+2. juu - 2,862 followers
+3. FUTUREmode - 3,481 followers
+4. succducc - 13,137 followers
+5. Kaivon - 107,707 followers
+```
+
+**Other great seed artists:** Flying Lotus, Tame Impala, Beach House, Portishead
 
 ## Current Status
 
