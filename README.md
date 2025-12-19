@@ -69,6 +69,13 @@ python discover.py --real "Radiohead"
 4. Ranks by discovery score (lower followers = higher score)
 5. Returns top 10 results
 
+**Note on Metrics:**
+- Uses **followers** (not monthly listeners) for discovery
+- Followers = people who clicked "Follow" (permanent subscribers)
+- Monthly listeners = people who played their music recently (dynamic metric)
+- Artists can have high monthly listeners but low followers (e.g., playlist virality)
+- Low followers = smaller dedicated fanbase = better for discovering "undiscovered" artists
+
 ## Example Output
 
 **Alternative Rock (Radiohead):**
